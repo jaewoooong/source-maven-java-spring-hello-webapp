@@ -33,23 +33,23 @@ pipeline {
     stage('Tag Docker Image') {
       agent any
       steps {
-        sh 'docker image tag myweb kimje1109/jenkins-ansible:$BUILD_NUMBER'
-        sh 'docker image tag myweb kimje1109/jenkins-ansible:latest'
+        sh 'docker image tag myweb kimje1109/myweb:$BUILD_NUMBER'
+        sh 'docker image tag myweb kimje1109/myweb:latest'
       }
     }
     stage('Publish Docker Image') {
       agent any
       steps {
         withDockerRegistry(credentialsId: 'docker-hub-token', url: 'https://index.docker.io/v1/') {
-          sh 'docker image push kimje1109/jenkins-ansible:$BUILD_NUMBER'
-          sh 'docker image push kimje1109/jenkins-ansible:latest'
+          sh 'docker image push kimje1109/myweb:$BUILD_NUMBER'
+          sh 'docker image push kimje1109/myweb:latest'
         }
       }
     }
     stage('Run Docker Container') {
       agent {
         docker { 
-          image 'kimje1109/jenkins-ansible'
+          image 'c1t1d0s7/jenkins-ansible'
           args '-u 0:0 -e DOCKER_HOST=tcp://192.168.56.104:2375'
         }
       }
