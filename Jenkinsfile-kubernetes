@@ -73,12 +73,12 @@ stage('Update K8s Manifests & Push') {
       steps {
         container('git') {
           git branch: 'main', credentialsId: 'github-credential', url: "${githubURL}"
-          sh "git config --global --add safe.directory $WORKSPACE"
+          sh "git config --global --add safe.directory ${workspace}"
           sh "git config --global user.name ${githubUser}"
           sh "git config --global user.email ${githubEmail}"
-          sh 'sed -i "s/image:.*/image: ${dockerhubId}\\/${dockerhubRepo}:$BUILD_NUMBER/g" deployment.yaml'
+          sh 'sed -i "s/image:.*/image: ${dockerhubId}\\/${dockerhubRepo}:${BUILD_NUMBER}/g" deployment.yaml'
           sh 'git add deployment.yaml'
-          sh 'git commit -m "Jenkins Build Number - $BUILD_NUMBER"'
+          sh 'git commit -m "Jenkins Build Number - ${BUILD_NUMBER}"'
           withCredentials([gitUsernamePassword(credentialsId: 'github-credential', gitToolName: 'Default')]) {
             sh 'git push --set-upstream origin main'
           }
