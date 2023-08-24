@@ -64,7 +64,7 @@ stage('Update K8s Manifests & Push') {
       environment {
         githubUser = 'JAEWOONG'
         githubEmail = 'kimje1109@gmail.com' 
-        githubId = 'kimje1109' 
+        githubId = 'jaewoooong' 
         githubRepo = 'argo-deploy-service'
         githubURL = "https://github.com/${githubId}/${githubRepo}.git"
         dockerhubId = 'kimje1109' 
