@@ -73,7 +73,7 @@ stage('Update K8s Manifests & Push') {
       steps {
         container('git') {
           git branch: 'main', credentialsId: 'github-credential', url: "${githubURL}"
-          sh "git config --global --add safe.directory $WORKSPACE"
+          sh "git config --global --add safe.directory ${WORKSPACE}"
           sh "git config --global user.name ${githubUser}"
           sh "git config --global user.email ${githubEmail}"
           sh 'sed -i "s/image:.*/image: ${dockerhubId}\\/${dockerhubRepo}:${BUILD_NUMBER}/g" deployment.yaml'
