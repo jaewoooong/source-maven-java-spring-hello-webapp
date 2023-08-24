@@ -68,7 +68,7 @@ stage('Update K8s Manifests & Push') {
         githubRepo = 'argo-deploy-service'
         githubURL = "https://github.com/${githubId}/${githubRepo}.git"
         dockerhubId = 'kimje1109' 
-        dockerhubRepo = 'hello-world-argo' 
+        dockerhubRepo = 'myweb' 
       }
       steps {
         container('git') {
