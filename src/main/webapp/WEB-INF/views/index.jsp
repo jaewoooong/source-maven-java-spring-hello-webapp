@@ -7,6 +7,6 @@
 <h1>${msg}</h1>
 <h2>Today is <fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/></h2>
 <h3>Version: 1.1.0</h3>
-<h3>argo enabled</h3>
+<h3>k8s, argo enabled</h3>
 </body>
 </html>
